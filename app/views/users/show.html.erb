@@ -1,16 +1,97 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <div class="box">
+    <h1><%= @user.first_name %>'s Profile</h1>
+    <p>Email: <%= @user.email %></p>
 
+    <% if @user.birthday.present? %>
+      <p>Birthday: <%= @user.birthday.strftime('%B %d, %Y') %></p>
+    <% else %>
+      <p>Birthday: Not provided</p>
+    <% end %>
+  </div>
+  <%= link_to 'Edit Profile', edit_user_registration_path %>
+    <% @selected_dances.each do |my_dance| %>
+  <div class="selection-dances" style="width:100px; height: 100px; color:grey; background-color: blue;">
+      <%= my_dance.name %>
+    <% end %>
+  </div>
+  <div>
+  <%= form_for @user do |f| %>
+  <div class="form-group">
+    <%= f.label :dances, "Select your dances" %>
+    <%= f.collection_check_boxes :dance_ids, Dance.all, :id, :name do |b| %>
+      <div class="dance-checkbox">
+        <%= b.check_box %>
+        <%= b.label %>
+      </div>
+    <% end %>
+  </div>
+  <%= f.submit "Submit" %>
+<% end %>
+  </div>
+</div>
+ <!-- <div class="form-container">
+    <h1>Select Your Favorite Dances</h1>
 
-<!-- app/views/users/show.html.erb -->
-<h1>Welcome, <%= @user.first_name %>!</h1>
+    <form id="dance-form">
+      <div class="checkbox-group">
+        <label class="checkbox-container">
+          <input type="checkbox" name="dance" value="Ballet">
+          <span class="checkmark"></span>
+          Ballet
+        </label>
 
-<p>Email: <%= @user.email %></p>
+        <label class="checkbox-container">
+          <input type="checkbox" name="dance" value="Hip-hop">
+          <span class="checkmark"></span>
+          Hip-hop
+        </label>
 
-<% if @user.birthday.present? %>
-  <p>Birthday: <%= @user.birthday.strftime('%B %d, %Y') %></p>
-<% else %>
-  <p>Birthday: Not provided</p>
+        <label class="checkbox-container">
+          <input type="checkbox" name="dance" value="Jazz">
+          <span class="checkmark"></span>
+          Jazz
+        </label>
+
+        <label class="checkbox-container">
+          <input type="checkbox" name="dance" value="Salsa">
+          <span class="checkmark"></span>
+          Salsa
+        </label>
+
+        <label class="checkbox-container">
+          <input type="checkbox" name="dance" value="Contemporary">
+          <span class="checkmark"></span>
+          Contemporary
+        </label>
+
+        <label class="checkbox-container">
+          <input type="checkbox" name="dance" value="Tap Dance">
+          <span class="checkmark"></span>
+          Tap Dance
+        </label>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Selection</button>
+    </form>
+
+    <div id="selected-dances" class="selected-dances">
+      <p><strong>Your selected dances:</strong></p>
+      <ul id="dances-list"></ul>
+    </div>
+  </div> -->
+
+<%= form_for @user do |f| %>
+  <div class="form-group">
+    <%= f.label :dances, "Select your dances" %>
+    <%= f.collection_check_boxes :dance_ids, Dance.all, :id, :name do |b| %>
+      <div class="checkbox">
+        <%= b.check_box %>
+        <%= b.label %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= f.submit "Submit" %>
 <% end %>
 
-<%= link_to 'Edit Profile', edit_user_registration_path %>

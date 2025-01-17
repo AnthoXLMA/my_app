@@ -7,3 +7,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+
+puts 'Creating Dances...'
+@dancespath = './db/fixtures/dances.json'
+@serialized_dances = File.read(@dancespath)
+@dances = JSON.parse(@serialized_dances)
+@dances.each do |c|
+  Dance.create(name: c['name'])
+end
