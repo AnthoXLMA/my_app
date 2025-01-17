@@ -1,0 +1,14 @@
+[
+  { "name": "Salsa" },
+  { "name": "Bachata" },
+  { "name": "Kizomba" },
+  { "name": "Kompa" },
+  { "name": "Zumba" },
+  { "name": "Zouk" },
+  { "name": "Rock" },
+  { "name": "West Coast Swing" },
+  { "name": "Ballet" },
+  { "name": "Hip-Hop"},
+  { "name": "Waltz"},
+  { "name": "Tango" }
+]

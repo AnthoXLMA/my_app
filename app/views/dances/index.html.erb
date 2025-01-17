@@ -1,0 +1,8 @@
+<h1>All Dances</h1>
+
+<% @dances.each do |dance| %>
+  <div class="dance">
+    <h2><%= dance.name %></h2>
+    <%= button_to 'Select Dance', select_dance_path(dance), method: :post, class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#home"
 
-  resources :users, only: [:index, :show]
-
+  resources :users, only: [:index, :show, :update, :edit] do
+    resources :dances, only: [:index] do
+    post 'select', on: :member  # This adds a route for selecting a dance
+  end
+end
 end
