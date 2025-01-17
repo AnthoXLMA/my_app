@@ -1,0 +1,16 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+
+
+<!-- app/views/users/show.html.erb -->
+<h1>Welcome, <%= @user.first_name %>!</h1>
+
+<p>Email: <%= @user.email %></p>
+
+<% if @user.birthday.present? %>
+  <p>Birthday: <%= @user.birthday.strftime('%B %d, %Y') %></p>
+<% else %>
+  <p>Birthday: Not provided</p>
+<% end %>
+
+<%= link_to 'Edit Profile', edit_user_registration_path %>
