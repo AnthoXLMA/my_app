@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @dances = Dance.all
-    @selected_dances = []
+    @my_dances = @dances.where(id: @user)
   end
 
   def new
@@ -65,6 +65,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, dance_ids: [])
+    params.require(:user).permit(:first_name, :email, dance_ids: [])
   end
 end

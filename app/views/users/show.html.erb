@@ -11,3 +11,9 @@
   </div>
   <%= link_to 'Edit Profile', edit_user_path %>
 
+<h3>Selected Dances:</h3>
+<ul>
+  <% @user.dances.each do |dance| %>
+    <li><%= dance.name %></li>
+  <% end %>
+</ul>
