@@ -59,6 +59,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   private
 
   def set_user
@@ -66,5 +67,21 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :email, dance_ids: [])
+  end
+
+  def update_dances_with_levels
+    @user.dance_users.destroy_all  # Clear previous dance selections
+
+    dance_ids = params[:user][:dance_ids]
+    levels = params[:user][:level] # Assuming `level` is an array of levels corresponding to dance_ids
+
+    if dance_ids && levels
+      dance_ids.each_with_index do |dance_id, index|
+        next if dance_id.blank? # Skip if no dance is selected
+
+        # Create a new DanceUser association with level
+        @user.dance_users.create(dance_id: dance_id, level: levels[index])
+      end
+    end
   end
 end

@@ -10,16 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_17_132603) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_17_211844) do
+  create_table "dance_users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "dances", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "niveau"
   end
 
   create_table "dances_users", id: false, force: :cascade do |t|
     t.integer "dance_id", null: false
     t.integer "user_id", null: false
+    t.string "level"
     t.index ["dance_id"], name: "index_dances_users_on_dance_id"
     t.index ["user_id"], name: "index_dances_users_on_user_id"
   end
