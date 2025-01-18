@@ -6,5 +6,7 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :dances
 
-DANCES = ['Salsa', 'Bachata', 'Kizomba']
+  # has_many :dance_users
+  # has_many :dances, through: :dance_users
+
 end
