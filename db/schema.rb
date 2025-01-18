@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_17_211844) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_18_135754) do
   create_table "dance_users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -20,15 +20,27 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_17_211844) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "niveau"
+    t.string "experience"
+  end
+
+  create_table "dances_levels", id: false, force: :cascade do |t|
+    t.integer "dance_id", null: false
+    t.integer "level_id", null: false
+    t.index ["dance_id"], name: "index_dances_levels_on_dance_id"
+    t.index ["level_id"], name: "index_dances_levels_on_level_id"
   end
 
   create_table "dances_users", id: false, force: :cascade do |t|
     t.integer "dance_id", null: false
     t.integer "user_id", null: false
-    t.string "level"
     t.index ["dance_id"], name: "index_dances_users_on_dance_id"
     t.index ["user_id"], name: "index_dances_users_on_user_id"
+  end
+
+  create_table "levels", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

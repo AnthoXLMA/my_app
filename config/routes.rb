@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root "pages#home"
 
   resources :users, only: [:index, :show, :update, :edit] do
-    resources :dances, only: [:index] do
+    resources :dances, only: [:index, :update, :edit] do
     post 'select', on: :member  # This adds a route for selecting a dance
   end
 end

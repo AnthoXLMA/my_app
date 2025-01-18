@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_and_belongs_to_many :dances
+  has_many :levels, through: :dances
 
   # has_many :dance_users
   # has_many :dances, through: :dance_users

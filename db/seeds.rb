@@ -16,3 +16,11 @@ puts 'Creating Dances...'
 @dances.each do |c|
   Dance.create(name: c['name'])
 end
+
+puts 'Creating Levels...'
+@levelspath = './db/fixtures/levels.json'
+@serialized_levels = File.read(@levelspath)
+@levels = JSON.parse(@serialized_levels)
+@levels.each do |c|
+  Level.create(name: c['name'])
+end
