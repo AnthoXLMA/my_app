@@ -1,5 +1,5 @@
 class AddColumnToDances < ActiveRecord::Migration[7.1]
   def change
-    add_column :dances, :niveau, :string
+    add_column :dances, :experience, :string
   end
 end

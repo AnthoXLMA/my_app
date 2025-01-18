@@ -12,12 +12,29 @@
 
   <%= link_to 'Edit Profile', edit_user_path %>
 
-  <h3>Selected Dances:</h3>
-  <ul>
+<h3>Selected Dances:</h3>
+<!--   <ul>
     <% @user.dances.each do |dance| %>
-      <li><%= dance.name %></li>
+      <li><%= dance.name %> - <%= dance[:level_id]  %></li>
     <% end %>
-  </ul>
+  </ul> -->
+
+<%= form_with(models: @user, local: true) do |f| %>
+  <div class="form-group">
+    <%= f.label :dances, "Select Your Dances and Levels" %>
+    <% @user.dances.each do |dance| %>
+      <div class="dance-selection">
+        <%= f.label "dance_#{dance.id}", dance.name %>
+        <%= f.collection_select :level_ids, Level.all, :id, :name do |b| %>
+          <%= b.check_box %> <%= b.label %>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Save Changes" %>
+    </div>
+  <% end %>
 </div>
 
 <%= form_for @user, html: { id: "dancer-profile-form" } do |f| %>
@@ -28,14 +45,15 @@
   <div class="form-group">
     <%= f.label :dances, "Select Your Dances" %>
     <%= f.collection_check_boxes :dance_ids, @dances, :id, :name do |b| %>
+    <%= f.collection_check_boxes :level_ids, Level.all, :id, :name do |b| %>
+          <%= b.check_box %> <%= b.label %>
+        <% end %>
       <div class="dance-checkbox">
         <%= b.check_box %>
         <%= b.label %>
-      </div>
     <% end %>
+    </div>
   </div>
   <%= f.submit "Create Profile", class: "btn btn-primary" %>
 <% end %>
-
-
 
