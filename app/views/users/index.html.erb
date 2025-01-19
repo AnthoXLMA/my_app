@@ -10,8 +10,12 @@
       </h5>
         <tr>
         </tr>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <p class="card-text">
+        <% user.dances.each do |dance| %>
+        <ul><%= dance.name %></ul>
+      </p>
+    <% end %>
+      <a href="" class="btn btn-light"><%= link_to 'Voir plus', user %></a>
     </div>
   </div>
   <% end %>

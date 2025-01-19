@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   # Permit additional fields for Devise
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def after_sign_out_path_for(resource_or_scope)
+    root_path # or any other path you want to redirect to after logout
+  end
+
   protected
 
   # Allow first_name and last_name to be passed in Devise forms

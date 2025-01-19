@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand">DANCING PARTNERS V.1</a>
@@ -6,10 +7,30 @@
     <a class="navbar-brand" href="#"><%= link_to 'Danseurs', users_path %></a>
     <a class="navbar-brand" href="#"><%= link_to 'Agenda', events_path %></a>
     <a class="navbar-brand" href="#"><%= link_to 'Chat', chat_path  %></a>
-    <a class="navbar-brand" href="#"><%= link_to 'Déconnexion'  %></a>
+    <a class="navbar-brand" href="#">
+      <%= form_for(:destroy_user_session, url: destroy_user_session_path, method: :delete) do |f| %>
+        <button class="btn btn-outline-success" type="submit"><%= f.submit 'Logout' %></button>
+      <% end %>
+    </a>
     <form class="d-flex" role="search">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
   </div>
 </nav>
+<% else %>
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand">DANCING PARTNERS V.1</a>
+    <a class="navbar-brand" href="#"><%= link_to 'Accueil', root_path %></a>
+    <a class="navbar-brand" href="#"><%= link_to 'Danseurs', users_path %></a>
+    <a class="navbar-brand" href="#"><%= link_to 'Agenda', events_path %></a>
+    <a class="navbar-brand" href="#"><%= link_to 'Chat', chat_path  %></a>
+    <a class="navbar-brand" href="#"><%= link_to 'Login', new_user_session_path %></a>
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<% end %>
