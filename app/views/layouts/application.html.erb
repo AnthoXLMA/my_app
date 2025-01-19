@@ -11,11 +11,7 @@
 
   <body>
     <%= render 'shared/navbar' %>
-    <div id="react-root"></div> <!-- React will render here -->
-    <% if user_signed_in? %>
-      <p>Connecté</p>
-    <% end %>
-      <%= render 'shared/footer' %>
     <%= yield %>
+    <%= render 'shared/footer' %>
   </body>
 </html>

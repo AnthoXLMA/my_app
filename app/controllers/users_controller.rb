@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
   # Show user profile
   def show
-    @user = current_user
+    @user   = User.find(params[:id])
     @dances = Dance.all
     # @my_dances = @dances.where(id: @user)
   end
