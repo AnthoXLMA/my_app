@@ -15,4 +15,6 @@ Rails.application.routes.draw do
     post 'select', on: :member  # This adds a route for selecting a dance
   end
 end
+
+  resources :events
 end
