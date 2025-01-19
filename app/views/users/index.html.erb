@@ -1,5 +1,4 @@
 <h1>COMMUNAUTE</h1>
-
 <div class="container-lg" style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
 <% @users.each do |user| %>
   <div class="card" style="width: 18rem;">
@@ -8,18 +7,13 @@
       <h5 class="card-title">
         <td><%= user.first_name %></td>
       </h5>
-        <tr>
-        </tr>
       <p class="card-text">
-        <% user.dances.each do |dance| %>
-        <ul><%= dance.name %></ul>
+        <%= user.dances.first.name %>
+        <button type="button" class='btn btn-primary'><%= link_to 'Voir plus', user, class:'text-dark border-0 custom-btn-hover' %></button>
       </p>
-    <% end %>
-    <button type="button" class="btn btn-primary text-dark border-0 custom-btn-hover" ><%= link_to 'Voir plus', user %></button>
     </div>
   </div>
   <% end %>
 </div>
-
-<button type="button" class="btn btn-primary text-decoration-none text_dark custom-btn" ><%= link_to 'Communautés de danseurs' %></button>
+<button type="button" class='btn btn-primary'><%= link_to 'Dancing Communities', class:'text-dark border-0 custom-btn-hover' %></button>
 
