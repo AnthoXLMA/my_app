@@ -1,4 +1,3 @@
-// app/javascript/components/hello_world.jsx
 import React from 'react'
 
 const HelloWorld = () => {

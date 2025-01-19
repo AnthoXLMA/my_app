@@ -1,0 +1,10 @@
+<div id="chat-room">
+  <div id="messages">
+    <%= render partial: "messages/message", collection: @messages, as: :message %>
+  </div>
+
+  <%= form_with url: chat_path, method: :post, id: "chat-form" do |form| %>
+    <%= form.text_field :message, id: 'message-input', placeholder: 'Type your message' %>
+    <%= form.submit 'Send' %>
+  <% end %>
+</div>

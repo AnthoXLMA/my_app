@@ -1,3 +1,20 @@
+<h1>COMMUNAUTE</h1>
+
+<div class="container-lg" style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
 <% @users.each do |user| %>
-<%= user.first_name %>
-<% end %>
+  <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">
+        <td><%= user.first_name %></td>
+      </h5>
+        <tr>
+        </tr>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<button type="button" class="btn btn-light"><%= link_to 'Communautés de danseurs' %></button>

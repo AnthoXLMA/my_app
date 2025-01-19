@@ -91,6 +91,6 @@ class UsersController < ApplicationController
   end
 
   def dance_params
-    params.require(:dance).permit(:name, level_ids: [])  # Permit level_ids (an array of selected levels)
+    params.require(:dance).permit(:name, :profile_picture, level_ids: [])  # Permit level_ids (an array of selected levels)
   end
 end

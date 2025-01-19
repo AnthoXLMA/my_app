@@ -1,0 +1,84 @@
+/* Chat container */
+#chat-room {
+  display: flex;
+  flex-direction: column;
+  height: 80vh; /* Adjust based on screen size */
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Messages container */
+#messages {
+  flex-grow: 1;
+  overflow-y: auto; /* Allow scrolling when messages overflow */
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Individual message styling */
+.message {
+  display: flex;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  word-wrap: break-word;
+}
+
+/* Sender name styling */
+.message strong {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Message content styling */
+.message p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Chat input form */
+#chat-form {
+  display: flex;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-top: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+#message-input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-right: 10px;
+  outline: none;
+}
+
+#message-input:focus {
+  border-color: #0066cc;
+}
+
+#chat-form input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#chat-form input[type="submit"]:hover {
+  background-color: #005bb5;
+}
