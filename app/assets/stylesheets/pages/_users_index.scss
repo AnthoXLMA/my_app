@@ -1,0 +1,11 @@
+button {
+  .custom-btn:hover {
+      background-color: #f8f9fa;
+      color: #343a40;
+    }
+
+    .custom-btn:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
