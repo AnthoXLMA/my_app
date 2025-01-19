@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     @user = current_user
     @dances = Dance.all
     # @my_dances = @dances.where(id: @user)
-
   end
 
   def new

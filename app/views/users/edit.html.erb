@@ -1,3 +1,5 @@
+<h3>Editer le profil</h3>
+<div>
 <%= form_for @user, html: { id: "dancer-profile-form" } do |f| %>
   <div class="form-group">
     <%= f.label :first_name, "Full Name" %>
@@ -6,11 +8,15 @@
   <div class="form-group">
     <%= f.label :dances, "Select Your Dances" %>
     <%= f.collection_check_boxes :dance_ids, @dances, :id, :name do |b| %>
+    <%= f.collection_check_boxes :level_ids, Level.all, :id, :name do |b| %>
+          <%= b.check_box %> <%= b.label %>
+        <% end %>
       <div class="dance-checkbox">
         <%= b.check_box %>
         <%= b.label %>
-      </div>
     <% end %>
+    </div>
   </div>
   <%= f.submit "Create Profile", class: "btn btn-primary" %>
 <% end %>
+</div>

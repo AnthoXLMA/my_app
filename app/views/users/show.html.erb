@@ -2,31 +2,25 @@
   <div class="box">
     <h1><%= @user.first_name %>'s Profile</h1>
     <p>Email: <%= @user.email %></p>
-
     <% if @user.birthday.present? %>
       <p>Birthday: <%= @user.birthday.strftime('%B %d, %Y') %></p>
     <% else %>
       <p>Birthday: Not provided</p>
     <% end %>
   </div>
-
+  <%= link_to 'Add an Event', new_event_path %>
   <%= link_to 'Edit Profile', edit_user_path %>
 
 <h3>Selected Dances:</h3>
-<!--   <ul>
-    <% @user.dances.each do |dance| %>
-      <li><%= dance.name %> - <%= dance[:level_id]  %></li>
-    <% end %>
-  </ul> -->
-
-<%= form_with(models: @user, local: true) do |f| %>
+  <div>
+  <%= form_with(models: @user, local: true) do |f| %>
   <div class="form-group">
     <%= f.label :dances, "Select Your Dances and Levels" %>
     <% @user.dances.each do |dance| %>
       <div class="dance-selection">
         <%= f.label "dance_#{dance.id}", dance.name %>
         <%= f.collection_select :level_ids, Level.all, :id, :name do |b| %>
-          <%= b.check_box %> <%= b.label %>
+        <%= b.check_box %> <%= b.label %>
         <% end %>
       </div>
     <% end %>
@@ -36,24 +30,3 @@
     </div>
   <% end %>
 </div>
-
-<%= form_for @user, html: { id: "dancer-profile-form" } do |f| %>
-  <div class="form-group">
-    <%= f.label :first_name, "Full Name" %>
-    <%= f.text_field :first_name, class: "form-control", required: true %>
-  </div>
-  <div class="form-group">
-    <%= f.label :dances, "Select Your Dances" %>
-    <%= f.collection_check_boxes :dance_ids, @dances, :id, :name do |b| %>
-    <%= f.collection_check_boxes :level_ids, Level.all, :id, :name do |b| %>
-          <%= b.check_box %> <%= b.label %>
-        <% end %>
-      <div class="dance-checkbox">
-        <%= b.check_box %>
-        <%= b.label %>
-    <% end %>
-    </div>
-  </div>
-  <%= f.submit "Create Profile", class: "btn btn-primary" %>
-<% end %>
-

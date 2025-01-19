@@ -13,5 +13,18 @@
  *= require_tree .
  *= require_self
  */
-/*@import "pages/index";*/
-/*@import "custom_styles";*/
+
+// Import partials */
+// @import 'reset';
+// @import 'variables';
+// @import 'base';
+// @import 'header';
+// @import 'footer';
+
+// Import component-specific styles */
+// @import 'components/button';
+
+// Import page-specific styles*/
+@import 'pages/index';
+@import 'components/index';
+@import 'bootstrap/dist/css/bootstrap.min.css';
