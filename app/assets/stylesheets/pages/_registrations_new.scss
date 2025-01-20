@@ -20,8 +20,10 @@ body {
 .container-green {
   width: 200px;
   height: 200px;
-  background-color: green;
+  background-color: blue;
+  border-radius: 30px;
 }
+
 /*form styles*/
 #msform {
   width: 400px;
@@ -29,6 +31,7 @@ body {
   text-align: center;
   position: relative;
 }
+
 #msform fieldset {
   background: white;
   border: 0 none;
