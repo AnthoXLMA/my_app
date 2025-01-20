@@ -30,6 +30,8 @@ gem 'sassc-rails', '~> 2.0'
 gem 'bootstrap', '~> 4.5'
 gem 'jsbundling-rails'
 gem 'httparty'
+gem 'webpacker'
+gem 'jquery-rails'
 
 
 # Use Redis adapter to run Action Cable in production

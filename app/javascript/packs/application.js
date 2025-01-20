@@ -18,6 +18,7 @@
 // app/javascript/packs/application.js
 import "core-js/stable";
 import "regenerator-runtime/runtime";
+import "stylesheets/application"
 
 // Your custom JavaScript can go here
 console.log("Hello, Rails with Webpacker!");

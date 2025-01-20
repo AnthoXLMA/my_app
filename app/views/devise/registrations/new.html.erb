@@ -1,4 +1,6 @@
-<h2>CREER TON PROFIL</h2>
+<div class="container-green">
+  <h2>CREER TON PROFIL</h2>
+</div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -67,5 +69,123 @@
   </div>
 <% end %>
 </div>
-
 <%= render "devise/shared/links" %>
+
+
+<div class="container-green">
+<h1>formulaire jquery</h1>
+</div>
+<!-- multistep form -->
+<form id="msform">
+  <!-- progressbar -->
+  <ul id="progressbar">
+    <li class="active">Account Setup</li>
+    <li>Social Profiles</li>
+    <li>Personal Details</li>
+  </ul>
+  <!-- fieldsets -->
+  <fieldset>
+    <h2 class="fs-title">Create your account</h2>
+    <h3 class="fs-subtitle">This is step 1</h3>
+    <input type="text" name="email" placeholder="Email" />
+    <input type="password" name="pass" placeholder="Password" />
+    <input type="password" name="cpass" placeholder="Confirm Password" />
+    <input type="button" name="next" class="next action-button" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Social Profiles</h2>
+    <h3 class="fs-subtitle">Your presence on the social network</h3>
+    <input type="text" name="twitter" placeholder="Twitter" />
+    <input type="text" name="facebook" placeholder="Facebook" />
+    <input type="text" name="gplus" placeholder="Google Plus" />
+    <input type="button" name="previous" class="previous action-button" value="Previous" />
+    <input type="button" name="next" class="next action-button" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Personal Details</h2>
+    <h3 class="fs-subtitle">We will never sell it</h3>
+    <input type="text" name="fname" placeholder="First Name" />
+    <input type="text" name="lname" placeholder="Last Name" />
+    <input type="text" name="phone" placeholder="Phone" />
+    <textarea name="address" placeholder="Address"></textarea>
+    <input type="button" name="previous" class="previous action-button" value="Previous" />
+    <a href="https://twitter.com/GoktepeAtakan" class="submit action-button" target="_top">Submit</a>
+  </fieldset>
+</form>
+
+<div class="container">
+  <div class="row">
+    <div class="well col-md-offset-3 col-md-6">
+    <form action="" method="post" id="register-form" novalidate="novalidate">
+    <h2>Registration form</h2>
+    <div id="form-content">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input class="form-control" type="text" name="name">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" name="password">
+    </div>
+    <div class="form-group">
+      <label for="city">City</label>
+      <input class="form-control" type="text" name="city">
+  </div>
+<div class="form-group">
+  <label> Gender </label><br/>
+<label for="gender_male">Male
+</label>
+<input type="radio" id="gender_male" value="male" name="gender" >
+   <label for="gender_female">Female</label>
+<input type="radio"  value="female" name="gender">
+</div>
+<div class="form-group">
+  <input class="btn btn-primary" type="submit" name="submit">
+  </div>
+</div>
+</form>
+    </div>
+  </div>
+</div>
+
+<script>
+   (document).ready(function() {
+
+        ("#register-form").validate({
+                rules: {
+                    name: "required",
+                    password: {
+                        required: true,
+                        minlength: 6
+                    },
+                   city: "required",
+                  gender: "required"
+
+                },
+                messages: {
+                    name: "Please enter your Name",
+                    password: {
+                        required: "Please provide a password",
+                        minlength: "Your password must be at least 6 characters long"
+                    },
+                  city: "Please enter your city",
+                  gender: "This field is required"
+                },
+                 errorPlacement: function(error, element)
+        {
+            if ( element.is(":radio") )
+            {
+                error.appendTo( element.parents('.form-group') );
+            }
+            else
+            { // This is the default behavior
+                error.insertAfter( element );
+            }
+         },
+                submitHandler: function(form) {
+                    form.submit();
+                }
+
+            });
+    });
+  </script>

@@ -1,5 +1,16 @@
 // app/assets/javascripts/application.js
+
+//= require jquery
 //= require rails-ujs
+//= require_tree .
+
+// app/javascript/packs/application.js
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
+// Your custom JavaScript can go here
+console.log("Hello, Rails with Webpacker!");
+
 document.addEventListener("DOMContentLoaded", function() {
   const checkbox = document.getElementById('newsletter-checkbox');
   const optionsDiv = document.getElementById('newsletter-options');
@@ -15,17 +26,14 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-// app/javascript/packs/application.js
-import "core-js/stable";
-import "regenerator-runtime/runtime";
-
-// Your custom JavaScript can go here
-console.log("Hello, Rails with Webpacker!");
-
-import $ from 'jquery';
-global.$ = global.jQuery = $;
-
-// Any other imports or libraries
-import { form } from './form';
-import SomeComponent from 'components/some_component';
-
+(document).on('turbolinks:load', function() {
+  // Toggle dropdown when checkbox is clicked
+  ('.dance-checkbox input').change(function() {
+    var dropdown = $(this).next('.dance-dropdown');
+    if (this.checked) {
+      dropdown.show();
+    } else {
+      dropdown.hide();
+    }
+  });
+});
