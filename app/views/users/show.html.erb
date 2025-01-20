@@ -1,5 +1,4 @@
 <div class="container text-center">
-  <div class="row">
     <div class="col">
     <h1><%= @user.first_name %>'s Profile</h1>
     <p>Email: <%= @user.email %></p>
@@ -9,38 +8,18 @@
     <p>Birthday: Not provided</p>
     <% end %>
   </div>
-
-<div class="col">
-  <h3>Mes Danses</h3>
-  <div>
-    <%= form_with(models: @user, local: true) do |f| %>
-    <div class="form-group">
-      <% @user.dances.each do |dance| %>
-        <div class="dance-selection">
-          <%= f.label "dance_#{dance.id}", dance.name %>
-          <div class="dropdown">
-          <%= f.collection_select :level_ids, Level.all, :id, :name do |b| %>
-          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= b.check_box %>
-          </button>
-          <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= b.label %>
-          </button>
+  <div class="col">
+    <div>
+      <%= form_with(models: @user, local: true) do |f| %>
+      <div class="form-group">
+        <% @user.dances.each do |dance| %>
+          <div class="dance-selection">
+            <%= f.label "dance_#{dance.id}", dance.name %>
           <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
-      <% end %>
-      </div>
-      <div class="actions">
-        <%= f.submit "Save Changes" %>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-    <div class="col">
-     <%= link_to 'Edit Profile', edit_user_path %>
     </div>
   </div>
 </div>
+<button type="button" class='btn btn-primary'><%= link_to 'Communautés', dances_path, class:'text-dark border-0 custom-btn-hover' %></button>

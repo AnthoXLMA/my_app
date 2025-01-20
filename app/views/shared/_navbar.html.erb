@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <a class="navbar-brand">DANCING PARTNERS V.1</a>
     <a class="navbar-brand" href="#"><%= link_to 'Accueil', root_path %></a>
-    <a class="navbar-brand" href="#"><%= link_to 'Mon profil', user_path(current_user) %></a>
+    <a class="navbar-brand" href="#"><%= link_to 'Mon profil', edit_user_path(current_user) %></a>
     <a class="navbar-brand" href="#"><%= link_to 'Danseurs', users_path %></a>
     <a class="navbar-brand" href="#"><%= link_to 'Agenda', events_path %></a>
     <a class="navbar-brand" href="#"><%= link_to 'Chat', chat_path  %></a>

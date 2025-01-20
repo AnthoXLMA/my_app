@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user! # Ensure the user is authenticated
+  # before_action :set_user
 
   def index
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
   end
+
   # Show user profile
   def show
     @user   = User.find(params[:id])
@@ -28,7 +30,7 @@ class UsersController < ApplicationController
       if request.xhr?
         render json: { success: false, errors: @user.errors.full_messages }, status: :unprocessable_entity
       else
-        @dances = Dance.all
+        Rails.logger.debug @user.errors.full_messages
         render :new
       end
     end
@@ -60,7 +62,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   private
 
   def set_user
@@ -68,7 +69,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :email, dance_ids: [])
+    params.require(:user).permit(:first_name, :email, :gender, :birthday, :experience, :type, :profile_picture, dance_ids: [])
   end
 
   # def update_dances_with_levels
@@ -86,11 +87,12 @@ class UsersController < ApplicationController
   #     end
   #   end
   # end
-  def set_dance
-    @dance = @user.dances.find(params[:id])  # Find the dance associated with the user
-  end
 
-  def dance_params
-    params.require(:dance).permit(:name, :profile_picture, level_ids: [])  # Permit level_ids (an array of selected levels)
-  end
+  # def set_dance
+  #   @dance = @user.dances.find(params[:id])  # Find the dance associated with the user
+  # end
+
+  # def dance_params
+  #   params.require(:dance).permit(:name, :experience, level_ids: [])  # Permit level_ids (an array of selected levels)
+  # end
 end

@@ -1,7 +1,7 @@
 # app/controllers/dances_controller.rb
 class DancesController < ApplicationController
   before_action :authenticate_user!  # Make sure user is logged in
-  before_action :set_dance, only: [:edit, :update, :show]
+  # before_action :set_dance
 
   def index
     @dances = Dance.all
@@ -9,6 +9,12 @@ class DancesController < ApplicationController
 
   def new
     @dance = Dance.new
+  end
+
+  def show
+    @dance = Dance.find(params[:id])
+    @users = User.all
+    @dancers = @dance.users
   end
 
   def create
@@ -68,10 +74,11 @@ class DancesController < ApplicationController
   end
 
   def set_dance
-    @dance = @user.dances.find(params[:id])  # Find the dance associated with the user
+    @dance = @user.dances.find(params[:id])# Find the dance associated with the user
+    # @dance = Dance.find(params[:dance_id])
   end
 
   def dance_params
-    params.require(:dance).permit(:name, level_ids: [])
+    params.require(:dance).permit(:name, :experience, :challenge, level_ids: [])
   end
 end
