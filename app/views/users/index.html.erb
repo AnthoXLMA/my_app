@@ -4,16 +4,12 @@
   <div class="card" style="width: 18rem;">
     <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">
-        <td><%= user.first_name %></td>
-      </h5>
-      <p class="card-text">
-        <%= user.dances.first.name %>
+      <h5 class="card-title"><td><%= user.first_name %></td></h5>
         <button type="button" class='btn btn-primary'><%= link_to 'Voir plus', user, class:'text-dark border-0 custom-btn-hover' %></button>
-      </p>
     </div>
   </div>
   <% end %>
 </div>
-<button type="button" class='btn btn-primary'><%= link_to 'Dancing Communities', class:'text-dark border-0 custom-btn-hover' %></button>
+
+<button type="button" class='btn btn-primary'><%= link_to 'Communautés', dances_path, class:'text-dark border-0 custom-btn-hover' %></button>
 

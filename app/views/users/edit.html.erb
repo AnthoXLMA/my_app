@@ -1,22 +1,142 @@
-<h3>Editer le profil</h3>
+<h1>Modifier mon profil</h1>
 <div>
+  <h3>Informations</h3>
+  <%= @user.first_name %>
+  <%= @user.gender %>
+
+
 <%= form_for @user, html: { id: "dancer-profile-form" } do |f| %>
-  <div class="form-group">
-    <%= f.label :first_name, "Full Name" %>
-    <%= f.text_field :first_name, class: "form-control", required: true %>
-  </div>
-  <div class="form-group">
-    <%= f.label :dances, "Select Your Dances" %>
-    <%= f.collection_check_boxes :dance_ids, @dances, :id, :name do |b| %>
-    <%= f.collection_check_boxes :level_ids, Level.all, :id, :name do |b| %>
-          <%= b.check_box %> <%= b.label %>
+    <div class="form-group">
+      <%= f.label :gender %>
+      <%= f.select :gender, options_for_select(['Lady', 'Gentleman', 'Association'], @user.gender) %>
+    </div>
+    <div class="form-group">
+        <%= f.collection_check_boxes :dance_ids, @dances, :id, :name do |b| %>
+        <%= f.collection_check_boxes :level_ids, Level.all, :id, :name do |b| %>
+        <%= b.check_box %> <%= b.label %>
+          <% end %>
+          <div class="dance-checkbox">
+            <%= b.check_box %>
+            <%= b.label %>
         <% end %>
-      <div class="dance-checkbox">
-        <%= b.check_box %>
-        <%= b.label %>
-    <% end %>
+      </div>
+    </div>
+    <%= f.submit "Enregistrer", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<h1>formulaire jquery</h1>
+<!-- multistep form -->
+<form id="msform">
+  <!-- progressbar -->
+  <ul id="progressbar">
+    <li class="active">Account Setup</li>
+    <li>Social Profiles</li>
+    <li>Personal Details</li>
+  </ul>
+  <!-- fieldsets -->
+  <fieldset>
+    <h2 class="fs-title">Create your account</h2>
+    <h3 class="fs-subtitle">This is step 1</h3>
+    <input type="text" name="email" placeholder="Email" />
+    <input type="password" name="pass" placeholder="Password" />
+    <input type="password" name="cpass" placeholder="Confirm Password" />
+    <input type="button" name="next" class="next action-button" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Social Profiles</h2>
+    <h3 class="fs-subtitle">Your presence on the social network</h3>
+    <input type="text" name="twitter" placeholder="Twitter" />
+    <input type="text" name="facebook" placeholder="Facebook" />
+    <input type="text" name="gplus" placeholder="Google Plus" />
+    <input type="button" name="previous" class="previous action-button" value="Previous" />
+    <input type="button" name="next" class="next action-button" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Personal Details</h2>
+    <h3 class="fs-subtitle">We will never sell it</h3>
+    <input type="text" name="fname" placeholder="First Name" />
+    <input type="text" name="lname" placeholder="Last Name" />
+    <input type="text" name="phone" placeholder="Phone" />
+    <textarea name="address" placeholder="Address"></textarea>
+    <input type="button" name="previous" class="previous action-button" value="Previous" />
+    <a href="https://twitter.com/GoktepeAtakan" class="submit action-button" target="_top">Submit</a>
+  </fieldset>
+</form>
+
+<div class="container">
+  <div class="row">
+    <div class="well col-md-offset-3 col-md-6">
+    <form action="" method="post" id="register-form" novalidate="novalidate">
+    <h2>Registration form</h2>
+    <div id="form-content">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input class="form-control" type="text" name="name">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" name="password">
+    </div>
+    <div class="form-group">
+      <label for="city">City</label>
+      <input class="form-control" type="text" name="city">
+  </div>
+<div class="form-group">
+  <label> Gender </label><br/>
+<label for="gender_male">Male
+</label>
+<input type="radio" id="gender_male" value="male" name="gender" >
+   <label for="gender_female">Female</label>
+<input type="radio"  value="female" name="gender">
+</div>
+<div class="form-group">
+  <input class="btn btn-primary" type="submit" name="submit">
+  </div>
+</div>
+</form>
     </div>
   </div>
-  <%= f.submit "Create Profile", class: "btn btn-primary" %>
-<% end %>
 </div>
+
+<script>
+   $(document).ready(function($) {
+
+        $("#register-form").validate({
+                rules: {
+                    name: "required",
+                    password: {
+                        required: true,
+                        minlength: 6
+                    },
+                   city: "required",
+                  gender: "required"
+
+                },
+                messages: {
+                    name: "Please enter your Name",
+                    password: {
+                        required: "Please provide a password",
+                        minlength: "Your password must be at least 6 characters long"
+                    },
+                  city: "Please enter your city",
+                  gender: "This field is required"
+                },
+                 errorPlacement: function(error, element)
+        {
+            if ( element.is(":radio") )
+            {
+                error.appendTo( element.parents('.form-group') );
+            }
+            else
+            { // This is the default behavior
+                error.insertAfter( element );
+            }
+         },
+                submitHandler: function(form) {
+                    form.submit();
+                }
+
+            });
+    });
+  </script>

@@ -3,8 +3,9 @@
 <h2>Un regard, une danse, une rencontre, un lifestyle!</h2>
 <p>Découvrez les communautés de vos danses favoris.</p>
 
-<h1>Welcome to the Rails React App!</h1>
-
 <%= link_to 'Voir mon profil', user_path(current_user) %>
-
-<div id="react-root"></div>
+<!-- app/views/welcome/index.html.erb -->
+<div data-controller="hello">
+  <input data-hello-target="name">
+  <button data-action="click->hello#greet">Greet</button>
+</div>

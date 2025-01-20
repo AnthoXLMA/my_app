@@ -1,8 +1,12 @@
-<h1>All Dances</h1>
-
+<h1>Communautés</h1>
+<div class="container-lg" style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
 <% @dances.each do |dance| %>
-  <div class="dance">
-    <h2><%= dance.name %></h2>
-    <%= button_to 'Select Dance', select_dance_path(dance), method: :post, class: 'btn btn-primary' %>
+  <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><td><%= dance.name %></td></h5>
+        <button type="button" class='btn btn-primary'><%= link_to 'Voir plus', dance_path(dance), class:'text-dark border-0 custom-btn-hover' %></button>
+    </div>
   </div>
-<% end %>
+  <% end %>
+</div>
