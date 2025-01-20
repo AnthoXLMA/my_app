@@ -8,8 +8,13 @@ class UsersController < ApplicationController
 
   # Show user profile
   def show
+    if user_signed_in?
     @user   = User.find(params[:id])
     @dances = Dance.all
+  # Proceed with action
+    else
+      render json: { error: "Unauthorized" }, status: :unauthorized
+    end
     # @my_dances = @dances.where(id: @user)
   end
 
