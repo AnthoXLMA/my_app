@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
 
   # Allow first_name and last_name to be passed in Devise forms
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :birthday])
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:first_name, :birthday])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :birthday])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :email, :birthday, :gender, :experience, :type, :profile_picture, dance_ids: []])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:first_name, :email, :birthday, :gender, :experience, :type, :profile_picture, dance_ids: []])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :email, :birthday, :gender, :experience, :type, :profile_picture, dance_ids: []])
   end
 end

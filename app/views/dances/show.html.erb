@@ -1,0 +1,8 @@
+<h1>Communauté <%= @dance.name %></h1>
+
+<% @dancers.each do |dancer| %>
+<%= dancer.first_name %>
+<% end %>
+
+
+<button type="button" class='btn btn-primary'><%= link_to 'Communautés', dances_path, class:'text-dark border-0 custom-btn-hover' %></button>
