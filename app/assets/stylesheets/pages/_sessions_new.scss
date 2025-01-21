@@ -23,6 +23,7 @@
   position: relative;
   z-index: 2; /* Formulaire au-dessus de l'arrière-plan */
   max-width: 400px;
+  height: 500px;
   margin-top: 50px;
   margin-left: auto;
   margin-right: 60px;
@@ -30,7 +31,9 @@
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.8); /* Fond semi-transparent */
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 20px 20px 15px rgba(1, 1, 1, 0.3);
+
 }
 
 // .next {
@@ -67,3 +70,6 @@ button {
 button:hover {
   background-color: #45a049;
 }
+
+
+
