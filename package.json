@@ -3,6 +3,7 @@
   "private": true,
   "devDependencies": {},
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "bootstrap-datepicker": "^1.10.0",
     "esbuild": "^0.24.2",
     "jquery-ui": "^1.14.1",
@@ -13,8 +14,7 @@
     "turbolinks": "^5.2.0"
   },
   "scripts": {
-    "build": "esbuild app/assets/javascripts/application.js --bundle --outdir=app/assets/builds",
-    "watch": "esbuild app/assets/javascripts/application.js --bundle --watch --outdir=app/assets/builds",
-    "build": "esbuild app/javascript/application.js --bundle --outdir=app/assets/builds --external:@popperjs/core"
+    "build": "esbuild app/assets/javascripts/application.js --bundle --outdir=app/assets/builds --external:@popperjs/core",
+    "watch": "esbuild app/assets/javascripts/application.js --bundle --watch --outdir=app/assets/builds"
   }
 }
