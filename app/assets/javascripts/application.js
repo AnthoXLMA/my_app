@@ -1,16 +1,17 @@
 //= require jquery
 //= require_tree
 //= require bootstrap
+//= require jquery-3.6.0.min
 
-import "bootstrap"
-
-import "bootstrap/dist/css/bootstrap.min.css"
+import { createPopper } from '@popperjs/core';
+import 'bootstrap/dist/js/bootstrap.bundle';
+global.$ = global.jQuery = $; // Ensure it's available globally
 import $ from 'jquery'
 import "./datepicker"  // Ensure you import the datepicker script
-import "@popperjs/core"  // Ensure Popper.js is available
-import * as Popper from '@popperjs/core'
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Bonne Nouvelle, ça fonctionne!');
+  console.log('Javascript est bien connecté');
 });
 
