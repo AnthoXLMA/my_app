@@ -26,7 +26,7 @@
   </div>
 
   <div class="mb-3">
-    <label for="birthday" class="form-label">Date de Naissance</label>
+    <label for="birthday" class="form-label" id="datepicker">Date de Naissance</label>
       <%= f.text_field :birthday, id: 'datepicker', autofocus: true, autocomplete: "Date de naissance", placeholder: "Date de Naissance" %>
   </div>
 
@@ -77,3 +77,9 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+      console.log("Page loaded!");
+      });
+    </script>
