@@ -15,7 +15,6 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
 //= require jquery
 //= require_tree
 //= require bootstrap
@@ -29,8 +28,10 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 global.$ = global.jQuery = $; // Ensure it's available globally
 import $ from 'jquery'
 import "./datepicker"  // Ensure you import the datepicker script
+import "./bienvenue"
 
-$(document).addEventListener('DOMContentLoaded', () => {
+
+(document).addEventListener('DOMContentLoaded', () => {
   console.log('Javascript est bien connecté');
 });
 
